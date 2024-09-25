@@ -4,36 +4,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.shahariyr.crud.entity.Student;
+
 import jakarta.persistence.EntityManager;
 
 @Repository
 public class StudentDaoImp implements StudentDAO {
 
-	
-	
 	@Autowired
 	private EntityManager entityManager;
-	
+
 	public StudentDaoImp(EntityManager entityManager) {
-		super();
 		this.entityManager = entityManager;
 	}
 
-	/*
-	public StudentDaoImp(EntityManager thEntityManager) {
-		entityManager = thEntityManager;
-	}
-	*/
-	
-
 	@Transactional
 	@Override
-	public void save() {
-		// TODO Auto-generated method stub
-		
+	public void save(Student theStudent) {
+		entityManager.persist(theStudent);
+
 	}
 
-	
-	
-	
 }

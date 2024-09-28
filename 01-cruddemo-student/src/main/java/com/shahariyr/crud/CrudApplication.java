@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.shahariyr.crud.dao.StudentDAO;
+import com.shahariyr.crud.dao.StudentDao;
 import com.shahariyr.crud.entity.Student;
 
 @SpringBootApplication
@@ -15,27 +15,27 @@ public class CrudApplication {
 		SpringApplication.run(CrudApplication.class, args);
 	}
 
-	
-	// @Bean // No need to add the "@Bean" annotation here, because the public
-	// method allow the component scan already.
-	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
+	@Bean
+	CommandLineRunner commandLineRunner(StudentDao studentDao) {
 		return CommandLineRunner -> {
-			createStudent(studentDAO);
+			createStudent(studentDao);
 		};
-
 	}
 
-	private void createStudent(StudentDAO studentDAO) {
+	private void createStudent(StudentDao studentDao) {
 
-		System.out.println("Creating the student object");
-		
-		Student tempStudent = new Student("Shahariyr", "reza", "shahariyr.reza@hotmail.com");
+		// Create student
+		System.out.println("Creating new student......");
+		Student tempStudent = new Student("Mitu", "Rahman", "Mitu.rahman@hotmail.com");
 
-		System.out.println("Saving the student object");
-		studentDAO.save(tempStudent);
-		
-		System.out.println("ID :"+tempStudent.getId());
-		
+		// Save student
+		System.out.println("Saveing the student.....");
+		studentDao.save(tempStudent);
+
+		// display student
+		System.out.println("id" +" "+ tempStudent.getId());
+		System.out.println("First name"+" " + tempStudent.getFirstName());
+		System.out.println("Last name"+" " + tempStudent.getLastName());
+		System.out.println("Email"+" " + tempStudent.getEmail());
 	}
-
 }

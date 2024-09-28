@@ -1,8 +1,9 @@
 package com.shahariyr.crud.dao;
 
-import com.shahariyr.crud.entity.Student;
+import com.shahariyr.crud.entity.*;
 
-public interface StudentDAO {
+public interface StudentDao {
 
 	void save(Student theStudent);
+
 }

@@ -1,9 +1,7 @@
 package com.shahariyr.crud.dao;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.shahariyr.crud.entity.Student;
-
 import jakarta.persistence.EntityManager;
 
 @Repository
@@ -19,6 +17,7 @@ public class StudentDaoImp implements StudentDao {
 		this.entityManager = entityManager;
 	}
 
+	//Override the method..
 	@Override
 	@Transactional
 	public void save(Student theStudent) {

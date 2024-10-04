@@ -4,6 +4,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.shahariyr.crud.entity.Student;
 import jakarta.persistence.EntityManager;
 
+
 @Repository
 public class StudentDaoImp implements StudentDao {
 
@@ -11,7 +12,7 @@ public class StudentDaoImp implements StudentDao {
 	private EntityManager entityManager;
 
 	// constructor define using field
-	// @Autowired ; optional
+	// @Autowired
 	public StudentDaoImp(EntityManager entityManager) {
 		super();
 		this.entityManager = entityManager;
@@ -24,5 +25,12 @@ public class StudentDaoImp implements StudentDao {
 		entityManager.persist(theStudent);
 
 	}
+
+	@Override
+	public Student findById(Integer id) {
+		// TODO Auto-generated method stub
+		return entityManager.find(Student.class, id);
+	}
+
 
 }

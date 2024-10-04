@@ -1,9 +1,12 @@
 package com.shahariyr.crud.dao;
+
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import com.shahariyr.crud.entity.Student;
 import jakarta.persistence.EntityManager;
-
+import jakarta.persistence.TypedQuery;
 
 @Repository
 public class StudentDaoImp implements StudentDao {
@@ -18,7 +21,7 @@ public class StudentDaoImp implements StudentDao {
 		this.entityManager = entityManager;
 	}
 
-	//Override the method..
+	// Override the method..
 	@Override
 	@Transactional
 	public void save(Student theStudent) {
@@ -32,5 +35,14 @@ public class StudentDaoImp implements StudentDao {
 		return entityManager.find(Student.class, id);
 	}
 
+	@Override
+	public List<Student> findall() {
+
+		// create query
+		TypedQuery<Student> theQuery = entityManager.createQuery("FROM Student", Student.class);
+
+		// return query result
+		return theQuery.getResultList();
+	}
 
 }

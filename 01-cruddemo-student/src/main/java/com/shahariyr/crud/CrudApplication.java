@@ -24,8 +24,27 @@ public class CrudApplication {
 
 			// findStudent(studentDao);
 
-			findAllStudent(studentDao);
+			//findAllStudent(studentDao);
+			
+			updateStudent(studentDao);
 		};
+	}
+
+	private void updateStudent(StudentDao studentDao) {
+		//read the student based on ID
+		System.out.println("Set the student id :");
+		int studentId = 3;
+		Student myStudent = studentDao.findById(studentId);
+		
+		//change first name
+		myStudent.setEmail("anik.ahamed@hotmail.com");;
+		
+		//update student
+		studentDao.update(myStudent);
+		
+		//display student
+		System.out.println(myStudent);
+		
 	}
 
 	private void findAllStudent(StudentDao studentDao) {

@@ -1,6 +1,7 @@
 package com.shahariyr.crud;
 
 import java.util.List;
+import java.util.Scanner;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -26,8 +27,22 @@ public class CrudApplication {
 
 			//findAllStudent(studentDao);
 			
-			updateStudent(studentDao);
+			//updateStudent(studentDao);
+			
+			delStudent(studentDao);
 		};
+	}
+
+	private void delStudent(StudentDao studentDao) {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the ID of the student");
+		int studentId = sc.nextInt();
+		sc.close();
+		//int studentId = 4;
+		System.out.println("Student Id of "+studentId +"has deleted successfully...");
+		studentDao.deletStudent(studentId);
+
 	}
 
 	private void updateStudent(StudentDao studentDao) {

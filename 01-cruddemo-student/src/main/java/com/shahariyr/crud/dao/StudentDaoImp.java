@@ -52,4 +52,18 @@ public class StudentDaoImp implements StudentDao {
 		
 	}
 
+	@Override
+	@Transactional
+	public void deletStudent(Integer id) {
+		
+		Student theStudent = entityManager.find(Student.class, id);
+		
+		entityManager.remove(theStudent);
+	}
+
 }
+
+
+
+
+

@@ -13,6 +13,8 @@ public interface StudentDao {
 	
 	void update(Student theStudent);
 	
+	void deletStudent(Integer id);
+	
 	
 
 }
